@@ -1,3 +1,5 @@
+
+import 'package:crypto_application/firebase_authentication/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_application/pages/cryptocurrencyList.dart';
 import 'package:crypto_application/pages/homePage.dart';
@@ -16,6 +18,7 @@ void main()=>runApp(
         'HomePage':(context)=>Home(),
         'CryptoCurrencyList':(context)=>CryptoCurrencyList(),
         'DetailsCryptocurrency':(context)=>DetailsCryptocurrency(),
+        'home':(context)=>Wrapper(),
       }
   ),
 );

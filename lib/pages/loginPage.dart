@@ -1,7 +1,10 @@
+import 'package:crypto_application/firebase_authentication/firebase_services/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+
 class LoginPage extends StatefulWidget {
 
   @override
@@ -9,6 +12,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPage extends State<LoginPage> {
+
+  final AuthService _auth=AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -201,17 +206,26 @@ class _LoginPage extends State<LoginPage> {
                           height: 44.0,
                           buttonColor: Colors.deepPurple ,
                           child: RaisedButton(
-                            onPressed: (){
-                              Fluttertoast.showToast(
-                                  msg: "Signed in succesfully!",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.CENTER,
-                                  timeInSecForIosWeb: 2,
-                                  backgroundColor: Colors.deepPurple,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0
-                              );
-                              Navigator.pushNamed(context, "HomePage");
+                            onPressed: () async{
+                              dynamic result=await _auth.signInAnon();
+
+                              if(result==null){
+                                print("error signing in");
+                              }
+                              else{
+                                print("signed in");
+                                print(result);
+                                Fluttertoast.showToast(
+                                    msg: "Signed in succesfully!",
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.SNACKBAR,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.deepPurple,
+                                    textColor: Colors.white,
+                                    fontSize: 16.0
+                                );
+                                Navigator.pushNamed(context, "HomePage");
+                              }
                             },
                             child: Text('Sign in',
                               style: TextStyle(
