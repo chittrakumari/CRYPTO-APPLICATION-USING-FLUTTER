@@ -46,8 +46,9 @@ class _DetailsCryptocurrency extends State<DetailsCryptocurrency> {
                 size: 30.0,
               ),
               label: Text('logout'),
-              onPressed: ()  {
-             Navigator.pushReplacementNamed(context, 'LoginPage');
+              onPressed:  ()  async {
+             //Navigator.pushReplacementNamed(context, 'LoginPage');
+             await _auth.signOut();
               },
             ),
           ),  

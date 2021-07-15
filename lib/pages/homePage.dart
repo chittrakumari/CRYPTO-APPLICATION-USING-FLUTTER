@@ -1,5 +1,3 @@
-
-
 import 'package:crypto_application/firebase_authentication/firebase_services/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,7 +43,7 @@ class _HomeState extends State<Home> {
             fontFamily: 'font1.otf',
           ),
         ),
-          automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
         elevation: 0.0,
         backgroundColor: Colors.deepPurple,
       ),
@@ -178,24 +176,23 @@ class _HomeState extends State<Home> {
                                                                 radius: 25.0,
                                                               )
                                                             : (data['${key}'][
-                                                                    'symbol'] ==
-                                                                'BCH')?CircleAvatar(
-                                                                radius: 25.0,
-                                                                backgroundImage:
-                                                                    AssetImage(
-                                                                        'assets/bitcoin cash.jpg'
-          
-                                                                ),
-                                                                
-                                      
-                                                               
-                                                              ):CircleAvatar(
-                                                                radius: 25.0,
-                                                                //backgroundColor: Colors.white,
-                                                                backgroundImage:
-                                                                    AssetImage(
-                                                                        'assets/ADA.jpg'),
-                                                              ),
+                                                                        'symbol'] ==
+                                                                    'BCH')
+                                                                ? CircleAvatar(
+                                                                    radius:
+                                                                        25.0,
+                                                                    backgroundImage:
+                                                                        AssetImage(
+                                                                            'assets/bitcoin cash.jpg'),
+                                                                  )
+                                                                : CircleAvatar(
+                                                                    radius:
+                                                                        25.0,
+                                                                    //backgroundColor: Colors.white,
+                                                                    backgroundImage:
+                                                                        AssetImage(
+                                                                            'assets/ADA.jpg'),
+                                                                  ),
                                         SizedBox(width: 5.0),
                                         Text(
                                           '${data['${key}']['symbol']}',
@@ -325,8 +322,9 @@ class _HomeState extends State<Home> {
                 size: 30.0,
               ),
               label: Text('logout'),
-              onPressed: () {
-               Navigator.pushReplacementNamed(context, 'LoginPage');
+              onPressed: () async {
+                //Navigator.pushReplacementNamed(context, 'LoginPage');
+               await  _auth.signOut();
               },
             ),
           ),

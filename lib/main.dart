@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
        initialData: null,
       child:
           MaterialApp(
-            home: const Wrapper(), 
+            home:  LoadingPage(), 
             debugShowCheckedModeBanner: false,
               //initialRoute: 'LoadingPage',
               routes: {
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
             'HomePage': (context) => Home(),
             'CryptoCurrencyList': (context) => CryptoCurrencyList(),
             'DetailsCryptocurrency': (context) => DetailsCryptocurrency(),
-            
+            'Wrapper':(context)=>Wrapper(),
           }),
     );
   }

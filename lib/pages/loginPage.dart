@@ -11,16 +11,17 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPage extends State<LoginPage> {
   final AuthService _auth = AuthService();
-
+  final _formKey = GlobalKey<FormState>();
   //text field state
   String email = '';
   String password = '';
+  String error = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-            automaticallyImplyLeading: false,
+          automaticallyImplyLeading: false,
           title: Text(
             'Signin',
             style: TextStyle(
@@ -40,8 +41,9 @@ class _LoginPage extends State<LoginPage> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(20.0, 80.0, 20.0, 0),
+            padding: EdgeInsets.fromLTRB(20.0, 70.0, 20.0, 0),
             child: Form(
+              key: _formKey,
               child: Column(
                 children: <Widget>[
                   Row(children: <Widget>[
@@ -68,6 +70,9 @@ class _LoginPage extends State<LoginPage> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
                     child: TextFormField(
+                      
+                      validator: (val) =>
+                          val!.isEmpty ? 'enter an email' : null,
                       onChanged: (val) {
                         setState(() {
                           email = val;
@@ -78,6 +83,8 @@ class _LoginPage extends State<LoginPage> {
                       ),
                       cursorColor: Colors.black,
                       decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
                         labelText: 'Enter your Username',
                         focusedBorder: OutlineInputBorder(
                             borderSide:
@@ -116,6 +123,9 @@ class _LoginPage extends State<LoginPage> {
                     padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
                     child: TextFormField(
                       obscureText: true,
+                      validator: (val) => val!.length < 6
+                          ? 'Enter a password more than 6 characters Long'
+                          : null,
                       onChanged: (val) {
                         setState(() {
                           password = val;
@@ -126,6 +136,8 @@ class _LoginPage extends State<LoginPage> {
                       ),
                       cursorColor: Colors.black,
                       decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
                         labelText: 'Enter your Password',
                         focusedBorder: OutlineInputBorder(
                             borderSide:
@@ -159,7 +171,7 @@ class _LoginPage extends State<LoginPage> {
                     ),
                   ),
 
-                  SizedBox(height: 28.0),
+                  SizedBox(height: 25.0),
 
                   //Button Theme for Sign in
 
@@ -172,25 +184,35 @@ class _LoginPage extends State<LoginPage> {
                         buttonColor: Colors.deepPurple,
                         child: RaisedButton(
                           onPressed: () async {
-                            print(email);
-                            print(password);
-                            /*dynamic result = await _auth.signInAnon();
-
-                            if (result == null) {
-                              print("error signing in");
-                            } else {
-                              print("signed in");
-                              print(result.uid);
-                              Fluttertoast.showToast(
-                                  msg: "Signed in succesfully!",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.SNACKBAR,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.deepPurple,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0);
-                            }*/
-                            Navigator.pushNamed(context, 'HomePage');
+                            if (_formKey.currentState!.validate()) {
+                              dynamic result = await _auth
+                                  .signinWithEmailAndPassword(email, password);
+                              if (result == null) {
+                                setState(() {
+                                  error = 'could not sign in';
+                                  Fluttertoast.showToast(
+                                      msg:
+                                          "Please enter the valid credentials for logging in",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.CENTER,
+                                      timeInSecForIosWeb: 1,
+                                      backgroundColor: Colors.deepPurple,
+                                      textColor: Colors.white,
+                                      fontSize: 16.0);
+                                });
+                              } else {
+                                Fluttertoast.showToast(
+                                    msg: "Signed in succesfully!",
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.CENTER,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.deepPurple,
+                                    textColor: Colors.white,
+                                    fontSize: 20.0);
+                                Navigator.pushReplacementNamed(
+                                    context, 'Wrapper');
+                              }
+                            }
                           },
                           child: Text(
                             'Sign in',
@@ -216,7 +238,8 @@ class _LoginPage extends State<LoginPage> {
                       buttonColor: Colors.deepPurple,
                       child: RaisedButton(
                         onPressed: () {
-                           Navigator.pushReplacementNamed(context, 'RegisterPage');
+                          Navigator.pushReplacementNamed(
+                              context, 'RegisterPage');
                         },
                         child: Text(
                           'Sign up',
@@ -233,7 +256,7 @@ class _LoginPage extends State<LoginPage> {
                     )
                   ]),
 
-                  SizedBox(height: 28.0),
+                  SizedBox(height:20.0),
 
                   ButtonTheme(
                     minWidth: 350.0,

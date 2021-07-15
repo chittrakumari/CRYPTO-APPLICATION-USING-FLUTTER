@@ -11,16 +11,17 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPage extends State<RegisterPage> {
   final AuthService _auth = AuthService();
-
+  final _formKey = GlobalKey<FormState>();
   //text field state
   String email = '';
   String password = '';
+  String error = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-            automaticallyImplyLeading: false,
+          automaticallyImplyLeading: false,
           title: Text(
             '      Register',
             style: TextStyle(
@@ -61,6 +62,7 @@ class _RegisterPage extends State<RegisterPage> {
           child: Padding(
             padding: EdgeInsets.fromLTRB(20.0, 80.0, 20.0, 0),
             child: Form(
+              key: _formKey,
               child: Column(
                 children: <Widget>[
                   Row(children: <Widget>[
@@ -87,6 +89,8 @@ class _RegisterPage extends State<RegisterPage> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
                     child: TextFormField(
+                      validator: (val) =>
+                          val!.isEmpty ? 'enter an email' : null,
                       onChanged: (val) {
                         setState(() {
                           email = val;
@@ -135,6 +139,9 @@ class _RegisterPage extends State<RegisterPage> {
                     padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
                     child: TextFormField(
                       obscureText: true,
+                      validator: (val) => val!.length < 6
+                          ? 'Enter a password more than 6 characters Long'
+                          : null,
                       onChanged: (val) {
                         setState(() {
                           password = val;
@@ -170,9 +177,29 @@ class _RegisterPage extends State<RegisterPage> {
                           height: 44.0,
                           buttonColor: Colors.deepPurple,
                           child: RaisedButton(
-                            onPressed: () {
-                              print(email);
-                              print(password);
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate()) {
+                                dynamic result =
+                                    await _auth.registerWithEmailAndPassword(
+                                        email, password);
+                                if (result == null) {
+                                  setState(() {
+                                    error = 'please supply a valid email';
+                                  });
+                                }
+                                else{
+                                  Fluttertoast.showToast(
+                                    msg: "Signed in succesfully!",
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.CENTER,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.deepPurple,
+                                    textColor: Colors.white,
+                                    fontSize: 20.0);
+                                 Navigator.pushReplacementNamed(
+                              context, 'Home');
+                                }
+                              }
                             },
                             child: Text(
                               'Sign up',
@@ -187,9 +214,16 @@ class _RegisterPage extends State<RegisterPage> {
                                 borderRadius: BorderRadius.circular(20.0)),
                           ),
                         ),
+                       
                       ),
+                       
                     ],
                   ),
+                  SizedBox(height: 12.0),
+                          Text(
+                         error,
+                    style: TextStyle(color: Colors.red, fontSize: 14.0),
+                    ),
                 ],
               ),
             ),

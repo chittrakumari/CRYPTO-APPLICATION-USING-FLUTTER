@@ -41,9 +41,7 @@ class  _LoadingPage extends State<LoadingPage> {
                     ]
                 ),
                 SizedBox(height: 360.0),
-
                 Row(
-
                     children:[
                       Padding(
                           padding: EdgeInsets.fromLTRB(45.0,0, 0, 0),

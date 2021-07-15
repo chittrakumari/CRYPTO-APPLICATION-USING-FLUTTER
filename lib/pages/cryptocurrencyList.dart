@@ -454,6 +454,7 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
               label: Text('logout'),
               onPressed: ()  {
                Navigator.pushReplacementNamed(context, 'LoginPage');
+              //await _auth.signOut();
               },
             ),
           ),
