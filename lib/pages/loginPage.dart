@@ -20,6 +20,7 @@ class _LoginPage extends State<LoginPage> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
+            automaticallyImplyLeading: false,
           title: Text(
             'Signin',
             style: TextStyle(
@@ -188,8 +189,8 @@ class _LoginPage extends State<LoginPage> {
                                   backgroundColor: Colors.deepPurple,
                                   textColor: Colors.white,
                                   fontSize: 16.0);
-                            }
-                            Navigator.pushNamed(context, 'HomePage');*/
+                            }*/
+                            Navigator.pushNamed(context, 'HomePage');
                           },
                           child: Text(
                             'Sign in',
@@ -215,8 +216,7 @@ class _LoginPage extends State<LoginPage> {
                       buttonColor: Colors.deepPurple,
                       child: RaisedButton(
                         onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, 'RegisterPage');
+                           Navigator.pushReplacementNamed(context, 'RegisterPage');
                         },
                         child: Text(
                           'Sign up',

@@ -44,6 +44,38 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
         url_data: 'dogecoin',
         currency_pic: 'dogecoin.png',
         currency_name: 'Dogecoin'),
+        currency(
+        url_data: 'ethereum-classic',
+        currency_pic: 'dogecoin.png',
+        currency_name: 'Ethereum Classic'),
+        currency(
+        url_data: 'bitcoin-cash',
+        currency_pic: 'dogecoin.png',
+        currency_name: 'Bitcoin Cash'),
+
+        currency(
+        url_data: 'eos',
+        currency_pic: 'dogecoin.png',
+        currency_name: 'EOS'),
+        currency(
+        url_data: 'stellar',
+        currency_pic: 'dogecoin.png',
+        currency_name: 'Stellar'),
+        currency(
+        url_data: 'litecoin',
+        currency_pic: 'dogecoin.png',
+        currency_name: 'Litecoin'),
+        currency(
+        url_data: 'iota',
+        currency_pic: 'dogecoin.png',
+        currency_name: 'IOTA'),
+        
+        currency(
+        url_data: 'monero',
+        currency_pic: 'dogecoin.png',
+        currency_name: 'Monero'),
+        
+
   ];
 
   //prices to print in home page
@@ -78,10 +110,11 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          leading: IconButton(
+          /*leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () => Navigator.pop(context, currency_subscribed_data),
-          ),
+          ),*/
+            automaticallyImplyLeading: false,
           title: Text(
             'Currency List',
             style: TextStyle(
@@ -125,7 +158,10 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
                                                     "${currency_data[index].currency_name}symbol"] ==
                                                 'USDT')
                                             ? Colors.teal[100]
-                                            : Colors.grey[200],
+                                            : (pricedata[
+                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                'BCH')
+? Colors.blue[100]:Colors.grey[200],
                             margin: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6),
                             child: Padding(
                               padding: EdgeInsets.all(0),
@@ -231,6 +267,7 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
                                                                     "${currency_data[index].currency_name}symbol"] ==
                                                                 'DOGE')
                                                             ? CircleAvatar(
+                                                              backgroundColor: Colors.lightGreen[100],
                                                                 child:
                                                                     new IconButton(
                                                                   icon:
@@ -245,14 +282,26 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
                                                                   onPressed:
                                                                       () {},
                                                                 ),
-                                                                backgroundColor:
-                                                                    Colors.lightGreen[
-                                                                        50],
+                                                               
                                                                 radius: 25.0,
                                                               )
-                                                            : CircleAvatar(
+                                                            :(pricedata[
+                                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                                'BCH')
+                                                            ?CircleAvatar(
+                                                                
                                                                 radius: 25.0,
-                                                                //backgroundColor: Colors.white,
+                                                                backgroundImage:
+                                                                    AssetImage(
+                                                                        'assets/bitcoin cash.jpg'
+          
+                                                                ),
+                                                                
+                                      
+                                                               
+                                                              ): CircleAvatar(
+                                                                radius: 25.0,
+                                                                backgroundColor: Colors.red,
                                                                 backgroundImage:
                                                                     AssetImage(
                                                                         'assets/ADA.jpg'),

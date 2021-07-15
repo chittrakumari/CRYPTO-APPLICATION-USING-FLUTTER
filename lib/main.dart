@@ -41,11 +41,12 @@ class MyApp extends StatelessWidget {
               //initialRoute: 'LoadingPage',
               routes: {
             'LoadingPage': (context) => LoadingPage(),
-            'LoginPage': (context) => LoginPage(),
+            'LoginPage':(context)=>LoginPage(),
+            'RegisterPage':(context)=>RegisterPage(),
             'HomePage': (context) => Home(),
             'CryptoCurrencyList': (context) => CryptoCurrencyList(),
             'DetailsCryptocurrency': (context) => DetailsCryptocurrency(),
-            'RegisterPage':(context)=>RegisterPage(),
+            
           }),
     );
   }

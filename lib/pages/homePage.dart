@@ -45,6 +45,7 @@ class _HomeState extends State<Home> {
             fontFamily: 'font1.otf',
           ),
         ),
+          automaticallyImplyLeading: false,
         elevation: 0.0,
         backgroundColor: Colors.deepPurple,
       ),
@@ -176,7 +177,19 @@ class _HomeState extends State<Home> {
                                                                         50],
                                                                 radius: 25.0,
                                                               )
-                                                            : CircleAvatar(
+                                                            : (data['${key}'][
+                                                                    'symbol'] ==
+                                                                'BCH')?CircleAvatar(
+                                                                radius: 25.0,
+                                                                backgroundImage:
+                                                                    AssetImage(
+                                                                        'assets/bitcoin cash.jpg'
+          
+                                                                ),
+                                                                
+                                      
+                                                               
+                                                              ):CircleAvatar(
                                                                 radius: 25.0,
                                                                 //backgroundColor: Colors.white,
                                                                 backgroundImage:
@@ -313,7 +326,7 @@ class _HomeState extends State<Home> {
               ),
               label: Text('logout'),
               onPressed: () {
-                Navigator.pushReplacementNamed(context, 'LoginPage');
+               Navigator.pushReplacementNamed(context, 'LoginPage');
               },
             ),
           ),

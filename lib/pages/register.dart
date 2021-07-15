@@ -20,6 +20,7 @@ class _RegisterPage extends State<RegisterPage> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
+            automaticallyImplyLeading: false,
           title: Text(
             '      Register',
             style: TextStyle(
@@ -28,18 +29,25 @@ class _RegisterPage extends State<RegisterPage> {
                 fontSize: 30.0),
           ),
           actions: <Widget>[
-            FlatButton.icon(onPressed:(){}, icon: Icon(Icons.person,
-            size: 30.0,), label: Text(
-                            'Sign In',
-                            style: TextStyle(
-                              letterSpacing: 2.0,
-                              fontSize: 23.0,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),),
+            FlatButton.icon(
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, 'LoginPage');
+              },
+              icon: Icon(
+                Icons.person,
+                size: 30.0,
+              ),
+              label: Text(
+                'Sign In',
+                style: TextStyle(
+                  letterSpacing: 1.0,
+                  fontSize: 23.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
           ],
-         
           elevation: 0.0,
           backgroundColor: Colors.deepPurple,
         ),
