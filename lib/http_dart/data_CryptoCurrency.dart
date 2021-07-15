@@ -26,7 +26,7 @@ var quotes;
       Response response = await get(url);
       Map data = jsonDecode(response.body);
       Map data1 = data["data"];
-      print(data1);
+     
       price_in_USD =
           double.parse(double.parse(data1["priceUsd"]).toStringAsFixed(3));
       price_in_INR = double.parse(

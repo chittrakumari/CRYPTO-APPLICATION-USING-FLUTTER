@@ -1,3 +1,4 @@
+import 'package:crypto_application/firebase_authentication/firebase_services/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -22,7 +23,6 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
   //currencreies in home page.nhhnn
   Map pricedata = {};
   Map currency_subscribed_data = {};
-
   List<currency> currency_data = [
     currency(
         url_data: 'bitcoin',
@@ -72,6 +72,7 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
     return true;
   }
 
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -377,7 +378,7 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
 
                     //Arrow button
                     Align(
-                      alignment: Alignment.bottomLeft,
+                      alignment: Alignment.bottomCenter,
                       child: ButtonTheme(
                         buttonColor: Colors.deepPurple[600],
                         child: RaisedButton(
@@ -394,6 +395,19 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
                         padding: EdgeInsets.all(15.0),
                       ),
                     ),
+                    Align(
+            alignment: Alignment.bottomLeft,
+            child: RaisedButton.icon(
+              icon: Icon(
+                Icons.person,
+                size: 30.0,
+              ),
+              label: Text('logout'),
+              onPressed: ()  {
+               Navigator.pushReplacementNamed(context, 'LoginPage');
+              },
+            ),
+          ),
                   ],
                 );
               }

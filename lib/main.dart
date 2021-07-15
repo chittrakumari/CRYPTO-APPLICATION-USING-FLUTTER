@@ -1,6 +1,7 @@
 import 'package:crypto_application/firebase_authentication/firebase_services/auth.dart';
 import 'package:crypto_application/firebase_authentication/wrapper.dart';
 import 'package:crypto_application/models/user.dart';
+import 'package:crypto_application/pages/register.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_application/pages/cryptocurrencyList.dart';
 import 'package:crypto_application/pages/homePage.dart';
@@ -30,18 +31,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<CustomUser?>.value(
+     
       value: AuthService().user,
-      initialData: null,
-      child: MaterialApp(
-          home: const Wrapper(),
-          debugShowCheckedModeBanner: false,
-          initialRoute: 'LoadingPage',
-          routes: {
+       initialData: null,
+      child:
+          MaterialApp(
+            home: const Wrapper(), 
+            debugShowCheckedModeBanner: false,
+              //initialRoute: 'LoadingPage',
+              routes: {
             'LoadingPage': (context) => LoadingPage(),
             'LoginPage': (context) => LoginPage(),
             'HomePage': (context) => Home(),
             'CryptoCurrencyList': (context) => CryptoCurrencyList(),
             'DetailsCryptocurrency': (context) => DetailsCryptocurrency(),
+            'RegisterPage':(context)=>RegisterPage(),
           }),
     );
   }
