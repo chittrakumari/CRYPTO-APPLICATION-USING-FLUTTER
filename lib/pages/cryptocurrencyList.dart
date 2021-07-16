@@ -44,10 +44,7 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
         url_data: 'dogecoin',
         currency_pic: 'dogecoin.png',
         currency_name: 'Dogecoin'),
-        currency(
-        url_data: 'ethereum-classic',
-        currency_pic: 'dogecoin.png',
-        currency_name: 'Ethereum Classic'),
+        
         currency(
         url_data: 'bitcoin-cash',
         currency_pic: 'dogecoin.png',
@@ -68,13 +65,15 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
         currency(
         url_data: 'iota',
         currency_pic: 'dogecoin.png',
-        currency_name: 'IOTA'),
-        
+        currency_name: 'IOTA'), 
         currency(
         url_data: 'monero',
         currency_pic: 'dogecoin.png',
         currency_name: 'Monero'),
-        
+        currency(
+        url_data: 'ethereum-classic',
+        currency_pic: 'dogecoin.png',
+        currency_name: 'Ethereum Classic'),
 
   ];
 
@@ -145,7 +144,7 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
                             color: (pricedata[
                                         "${currency_data[index].currency_name}symbol"] ==
                                     'BTC')
-                                ? Colors.amber[300]
+                                ? Colors.yellow[600]
                                 : (pricedata[
                                             "${currency_data[index].currency_name}symbol"] ==
                                         'DOGE')
@@ -161,7 +160,23 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
                                             : (pricedata[
                                                     "${currency_data[index].currency_name}symbol"] ==
                                                 'BCH')
-? Colors.blue[100]:Colors.grey[200],
+? Colors.blue[100]: (pricedata[ "${currency_data[index].currency_name}symbol"] ==
+                                                'BCH')?Colors.grey[200]:(pricedata[
+                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                'XMR')
+                                            ? Colors.blue[100]:(pricedata[
+                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                'LTC')
+                                            ? Colors.yellow[600]:(pricedata[
+                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                'EOS')
+                                            ? Colors.blueGrey[100]:(pricedata[
+                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                'ETC')
+                                            ? Colors.blueGrey[100]:(pricedata[
+                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                'XLM')
+                                            ? Colors.teal[800]:Colors.grey[200],
                             margin: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6),
                             child: Padding(
                               padding: EdgeInsets.all(0),
@@ -298,10 +313,91 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
                                                                 ),
                                                                 
                                       
+                                                                ):(pricedata[
+                                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                                'ETC')
+                                                            ?CircleAvatar(
+                                                                backgroundColor: Colors.grey[100],
+                                                                child:
+                                                                    new IconButton(
+                                                                  icon:
+                                                                      new Icon(
+                                                                    CryptoFontIcons.ETC,
+                                                                        
+                                                                    size: 35.0,
+                                                                    color: Colors.black,),
+                                                                    onPressed:
+                                                                      () {},
+                                                                ),
                                                                
-                                                              ): CircleAvatar(
                                                                 radius: 25.0,
-                                                                backgroundColor: Colors.red,
+                                                                
+                                                                ):(pricedata[
+                                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                                'EOS')
+                                                            ?CircleAvatar(radius: 25.0,
+                                                                
+                                                                backgroundImage:
+                                                                    AssetImage(
+                                                                        'assets/eos.png'),)
+                                                                
+                                                                :(pricedata[
+                                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                                'XMR')
+                                                            ? CircleAvatar(
+                                                             // backgroundColor: Colors.lightGreen[100],
+                                                                child:
+                                                                    new IconButton(
+                                                                  icon:
+                                                                      new Icon(
+                                                                    CryptoFontIcons.XMR,size: 35.0,
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {},
+                                                                ),
+                                                               
+                                                                radius: 25.0,
+                                                              ):(pricedata[
+                                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                                'LTC')
+                                                            ?CircleAvatar(
+                                                                backgroundColor: Colors.yellow[50],
+                                                                child:
+                                                                    new IconButton(
+                                                                  icon:
+                                                                      new Icon(
+                                                                    CryptoFontIcons.LTC,
+                                                                        
+                                                                    size: 35.0,
+                                                                    color: Colors.yellow[800],
+                                                                    ),
+                                                                    onPressed:
+                                                                      () {},
+                                                                ),
+                                                               
+                                                                radius: 25.0,
+                                                                
+                                                                ):(pricedata[
+                                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                                'MIOTA')
+                                                            ?CircleAvatar(radius: 25.0,
+                                                                
+                                                                backgroundImage:
+                                                                    AssetImage(
+                                                                        'assets/iota.png'),
+                                                                
+                                                                
+                                                                ):(pricedata[
+                                                                    "${currency_data[index].currency_name}symbol"] ==
+                                                                'XLM')
+                                                            ?CircleAvatar(radius: 25.0,
+                                                                
+                                                                backgroundImage:
+                                                                    AssetImage(
+                                                                        'assets/stellar2.jpg'),
+                                                                ):CircleAvatar(
+                                                                radius: 25.0,
+                                                                
                                                                 backgroundImage:
                                                                     AssetImage(
                                                                         'assets/ADA.jpg'),
@@ -321,7 +417,7 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
                                             '+')
                                           Icon(
                                             Icons.arrow_drop_up_outlined,
-                                            size: 26,
+                                            size: 28,
                                             color: Colors.green,
                                           ),
                                         if (pricedata[
@@ -329,7 +425,7 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
                                             '')
                                           Icon(
                                             Icons.arrow_drop_down_outlined,
-                                            size: 26,
+                                            size: 28,
                                             color: Colors.red,
                                           ),
                                         SizedBox(width: 0.0),

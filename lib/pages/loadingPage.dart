@@ -102,7 +102,7 @@ class  _LoadingPage extends State<LoadingPage> {
                     child: RaisedButton(
 
                   onPressed: (){
-                  Navigator.pushNamed(context, "LoginPage");
+                  Navigator.pushReplacementNamed(context, "LoginPage");
                 },
                         child: Icon(
                     Icons.arrow_forward_ios_outlined,

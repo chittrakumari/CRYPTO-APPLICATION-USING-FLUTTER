@@ -185,10 +185,72 @@ class _HomeState extends State<Home> {
                                                                         AssetImage(
                                                                             'assets/bitcoin cash.jpg'),
                                                                   )
-                                                                : CircleAvatar(
+                                                                :(data['${key}'][
+                                                                    'symbol'] ==
+                                                                'ETC')
+                                                            ? CircleAvatar(
+                                                                backgroundColor: Colors.grey[100],
+                                                                child:
+                                                                    new IconButton(
+                                                                  icon:
+                                                                      new Icon(
+                                                                    CryptoFontIcons.ETC,                             
+                                                                    size: 35.0,
+                                                                    color: Colors.black,),
+                                                                     onPressed:(){},      
+                                                                ),
+                                                               
+                                                                radius: 25.0,
+                                                              ): (data['${key}'][
+                                                                        'symbol'] ==
+                                                                    'EOS')
+                                                                ? CircleAvatar(
                                                                     radius:
                                                                         25.0,
-                                                                    //backgroundColor: Colors.white,
+                                                                    backgroundImage:
+                                                                        AssetImage(
+                                                                            'assets/eos.png'),
+                                                                  ):(data['${key}'][
+                                                                    'symbol'] ==
+                                                                'LTC')
+                                                            ? CircleAvatar(
+                                                                 backgroundColor: Colors.yellow[50],
+                                                                child:
+                                                                    new IconButton(
+                                                                  icon:
+                                                                      new Icon(
+                                                                    CryptoFontIcons.LTC,
+                                                                        
+                                                                    size: 35.0,
+                                                                    color: Colors.yellow[800],
+                                                                    ),
+                                                                    onPressed:
+                                                                      () {},
+                                                                ),
+                                                               
+                                                                radius: 25.0,
+                                                              ):(data['${key}'][
+                                                                    'symbol'] ==
+                                                                'MIOTA')
+                                                            ? CircleAvatar(radius: 25.0,
+                                                                
+                                                                backgroundImage:
+                                                                    AssetImage(
+                                                                        'assets/iota.png'),
+                                                                 
+                                                              ):(data['${key}'][
+                                                                    'symbol'] ==
+                                                                'XLM')
+                                                            ? CircleAvatar(radius: 25.0,
+                                                                
+                                                                backgroundImage:
+                                                                    AssetImage(
+                                                                        'assets/stellar2.jpg'),
+                                                                 
+                                                              ):CircleAvatar(
+                                                                    radius:
+                                                                        25.0,
+                                                                  
                                                                     backgroundImage:
                                                                         AssetImage(
                                                                             'assets/ADA.jpg'),

@@ -71,6 +71,8 @@ flutter:
     - assets/
     - assets/ADA.jpg
     - assets/bitcoin cash.jpg
+    - assets/eos.png
+    - assets/iota.png
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
