@@ -36,10 +36,10 @@ class _HomeState extends State<Home> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
-          'Subscribed Cryptocurrencies ',
+          '       Subscribed    Cryptocurrencies',
           style: TextStyle(
             fontSize: 21.0,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
             fontFamily: 'font1.otf',
           ),
         ),
@@ -354,6 +354,7 @@ class _HomeState extends State<Home> {
                 ),
             ],
           ),
+          
           Align(
             alignment: Alignment.bottomCenter,
             child: ButtonTheme(

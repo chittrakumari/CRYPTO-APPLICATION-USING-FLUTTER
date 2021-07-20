@@ -1,4 +1,5 @@
 import 'package:crypto_application/firebase_authentication/firebase_services/auth.dart';
+import 'package:crypto_application/pages/LoadingPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -16,9 +17,10 @@ class _RegisterPage extends State<RegisterPage> {
   String email = '';
   String password = '';
   String error = '';
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading?LoadingPage():Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -179,25 +181,28 @@ class _RegisterPage extends State<RegisterPage> {
                           child: RaisedButton(
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
+                                setState(() {
+                                  loading = true;
+                                });
                                 dynamic result =
                                     await _auth.registerWithEmailAndPassword(
                                         email, password);
                                 if (result == null) {
                                   setState(() {
                                     error = 'please supply a valid email';
+                                    loading = false;
                                   });
-                                }
-                                else{
+                                } else {
                                   Fluttertoast.showToast(
-                                    msg: "Signed in succesfully!",
-                                    toastLength: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.CENTER,
-                                    timeInSecForIosWeb: 1,
-                                    backgroundColor: Colors.deepPurple,
-                                    textColor: Colors.white,
-                                    fontSize: 20.0);
-                                 Navigator.pushReplacementNamed(
-                              context, 'Home');
+                                      msg: "Signed in succesfully!",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.CENTER,
+                                      timeInSecForIosWeb: 1,
+                                      backgroundColor: Colors.deepPurple,
+                                      textColor: Colors.white,
+                                      fontSize: 20.0);
+                                  Navigator.pushReplacementNamed(
+                                      context, 'Home');
                                 }
                               }
                             },
@@ -214,16 +219,14 @@ class _RegisterPage extends State<RegisterPage> {
                                 borderRadius: BorderRadius.circular(20.0)),
                           ),
                         ),
-                       
                       ),
-                       
                     ],
                   ),
                   SizedBox(height: 12.0),
-                          Text(
-                         error,
+                  Text(
+                    error,
                     style: TextStyle(color: Colors.red, fontSize: 14.0),
-                    ),
+                  ),
                 ],
               ),
             ),

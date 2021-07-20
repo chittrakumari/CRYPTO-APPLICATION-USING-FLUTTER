@@ -5,7 +5,7 @@ import 'package:crypto_application/pages/register.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_application/pages/cryptocurrencyList.dart';
 import 'package:crypto_application/pages/homePage.dart';
-import 'package:crypto_application/pages/loadingPage.dart';
+import 'package:crypto_application/pages/WelcomePage.dart';
 import 'package:crypto_application/pages/loginPage.dart';
 import 'package:crypto_application/pages/detailsCryptoCurrency.dart';
 import 'package:provider/provider.dart';
@@ -36,11 +36,11 @@ class MyApp extends StatelessWidget {
        initialData: null,
       child:
           MaterialApp(
-            home:  LoadingPage(), 
+            home:  WelcomePage(), 
             debugShowCheckedModeBanner: false,
-              //initialRoute: 'LoadingPage',
+              initialRoute: 'WelcomePage',
               routes: {
-            'LoadingPage': (context) => LoadingPage(),
+            'WelcomePage': (context) => WelcomePage(),
             'LoginPage':(context)=>LoginPage(),
             'RegisterPage':(context)=>RegisterPage(),
             'HomePage': (context) => Home(),
