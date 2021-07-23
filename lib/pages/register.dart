@@ -29,7 +29,7 @@ class _RegisterPage extends State<RegisterPage> {
             style: TextStyle(
                 letterSpacing: 2.0,
                 fontWeight: FontWeight.w800,
-                fontSize: 30.0),
+                fontSize: 31.0),
           ),
           actions: <Widget>[
             FlatButton.icon(
