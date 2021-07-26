@@ -55,14 +55,15 @@ class _RegisterPage extends State<RegisterPage> {
           backgroundColor: Colors.deepPurple,
         ),
         body: new Container(
-          /*decoration: new BoxDecoration(
+          decoration: new BoxDecoration(
             image: new DecorationImage(
-              image: AssetImage('assets/login_page_image.png'),
+              image: AssetImage('assets/register.png'),
               fit: BoxFit.fitWidth,
+              alignment: Alignment.bottomCenter,
             ),
-          ),*/
+          ),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(20.0, 80.0, 20.0, 0),
+            padding: EdgeInsets.fromLTRB(20.0, 55.0, 20.0, 0),
             child: Form(
               key: _formKey,
               child: Column(
@@ -166,9 +167,9 @@ class _RegisterPage extends State<RegisterPage> {
                     ),
                   ),
 
-                  SizedBox(height: 47.0),
+                  SizedBox(height: 33.0),
 
-                  //Button Theme for Sign in
+                  //Button Theme for Sign up
 
                   Row(
                     children: <Widget>[
