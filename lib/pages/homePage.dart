@@ -35,17 +35,18 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text(
-          '       Subscribed    Cryptocurrencies',
-          style: TextStyle(
-            fontSize: 21.0,
-            fontWeight: FontWeight.w700,
-            fontFamily: 'font1.otf',
+         title: Text(
+            '   Subscribed     Currencies',
+            style: TextStyle(
+              fontSize: 26.0,
+              fontFamily: 'font1.otf',
+              letterSpacing: 1.0,
+            ),
           ),
-        ),
         automaticallyImplyLeading: false,
         elevation: 0.0,
         backgroundColor: Colors.deepPurple,
+        
       ),
       body: Stack(
         children: [
@@ -88,7 +89,7 @@ class _HomeState extends State<Home> {
                         itemBuilder: (context, index) {
                           var key = data.keys.elementAt(index);
                           return Card(
-                              margin: EdgeInsets.fromLTRB(10.0, 37.0, 5.0, 0),
+                              margin: EdgeInsets.fromLTRB(10.0, 36.0, 5.0, 0),
                               child: Padding(
                                   padding: EdgeInsets.all(0),
                                   child: ListTile(
@@ -247,6 +248,25 @@ class _HomeState extends State<Home> {
                                                                     AssetImage(
                                                                         'assets/stellar2.jpg'),
                                                                  
+                                                              ):(data['${key}'][
+                                                                    'symbol'] ==
+                                                                'XMR')
+                                                            ? CircleAvatar(
+                                                                
+                                                                child:
+                                                                    new IconButton(
+                                                                  icon:
+                                                                      new Icon(
+                                                                    CryptoFontIcons.XMR,
+                                                                        
+                                                                    size: 35.0,
+                                                                    
+                                                                    ),
+                                                                    onPressed:
+                                                                      () {},
+                                                                ),
+                                                               
+                                                                radius: 25.0,
                                                               ):CircleAvatar(
                                                                     radius:
                                                                         25.0,
@@ -255,7 +275,7 @@ class _HomeState extends State<Home> {
                                                                         AssetImage(
                                                                             'assets/ADA.jpg'),
                                                                   ),
-                                        SizedBox(width: 5.0),
+                                        SizedBox(width: 2.5),
                                         Text(
                                           '${data['${key}']['symbol']}',
                                           style: TextStyle(
@@ -263,17 +283,17 @@ class _HomeState extends State<Home> {
                                             fontSize: 22.0,
                                           ),
                                         ),
-                                        SizedBox(width: 8.0),
+                                        SizedBox(width: 15.0),
                                         if (data['${key}']['sign'] == '+')
                                           Icon(
                                             Icons.arrow_drop_up_outlined,
-                                            size: 26,
+                                            size: 28,
                                             color: Colors.green,
                                           ),
                                         if (data['${key}']['sign'] == '')
                                           Icon(
                                             Icons.arrow_drop_down_outlined,
-                                            size: 26,
+                                            size: 28,
                                             color: Colors.red,
                                           ),
                                         Text(
@@ -284,7 +304,7 @@ class _HomeState extends State<Home> {
                                             fontSize: 19.0,
                                           ),
                                         ),
-                                        SizedBox(width: 11.0),
+                                        SizedBox(width: 26.0),
                                         Text(
                                           '\u{20B9}${data['${key}']['price_in_INR']}',
                                           style: TextStyle(
@@ -305,13 +325,13 @@ class _HomeState extends State<Home> {
                                           ),
                                           child: Text('${key}'),
                                         ),
-                                        SizedBox(height: 4.0),
+                                        
                                         Padding(
                                           padding: EdgeInsets.fromLTRB(
                                               196.0, 0.0, 0, 0),
                                           child: ButtonTheme(
                                             minWidth: 110,
-                                            height: 40,
+                                            height: 39,
                                             child: RaisedButton(
                                               onPressed: () {
                                                 Fluttertoast.showToast(
@@ -367,7 +387,7 @@ class _HomeState extends State<Home> {
                 ),
                 onPressed: () async {
                   dynamic datalist =
-                      await Navigator.pushNamed(context, 'CryptoCurrencyList');
+                      await  Navigator.pushNamed(context, 'CryptoCurrencyList');
                   setState(() {
                     data.addAll(datalist);
                   });
@@ -377,20 +397,7 @@ class _HomeState extends State<Home> {
               padding: EdgeInsets.all(15.0),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: RaisedButton.icon(
-              icon: Icon(
-                Icons.person,
-                size: 30.0,
-              ),
-              label: Text('logout'),
-              onPressed: () async {
-                //Navigator.pushReplacementNamed(context, 'LoginPage');
-               await  _auth.signOut();
-              },
-            ),
-          ),
+          
         ],
       ),
     );

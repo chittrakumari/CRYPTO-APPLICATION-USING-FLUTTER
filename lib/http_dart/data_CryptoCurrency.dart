@@ -28,17 +28,17 @@ var quotes;
       Map data1 = data["data"];
      
       price_in_USD =
-          double.parse(double.parse(data1["priceUsd"]).toStringAsFixed(3));
+          double.parse(double.parse(data1["priceUsd"]).toStringAsFixed(2));
       price_in_INR = double.parse(
-          (double.parse(data1["priceUsd"]) * 72.91).toStringAsFixed(3));
+          (double.parse(data1["priceUsd"]) * 72.91).toStringAsFixed(1));
       marketCapUsd =
-          double.parse(double.parse(data1["marketCapUsd"]).toStringAsFixed(3));
+          double.parse(double.parse(data1["marketCapUsd"]).toStringAsFixed(1));
       maxSupply = data1["maxSupply"];
       volumeUsd24Hr =
-          double.parse(double.parse(data1["volumeUsd24Hr"]).toStringAsFixed(3));
+          double.parse(double.parse(data1["volumeUsd24Hr"]).toStringAsFixed(1));
 
       changePercent24Hr = double.parse(
-          double.parse(data1["changePercent24Hr"]).toStringAsFixed(3));
+          double.parse(data1["changePercent24Hr"]).toStringAsFixed(1));
       if (changePercent24Hr > 0) {
         sign = "+";
       }

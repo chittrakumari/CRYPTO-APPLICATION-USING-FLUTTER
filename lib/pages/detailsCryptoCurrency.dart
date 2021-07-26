@@ -14,11 +14,7 @@ final AuthService _auth = AuthService();
 
 class _DetailsCryptocurrency extends State<DetailsCryptocurrency> {
   Map currency_tapped_data = {};
-  int _currentIndex = 0;
-  final tabs = [
-    Home(),CryptoCurrencyList(),LoginPage()
-  ];
-  @override
+    @override
   Widget build(BuildContext context) {
     currency_tapped_data = ModalRoute.of(context)!.settings.arguments as Map;
 
@@ -53,41 +49,17 @@ class _DetailsCryptocurrency extends State<DetailsCryptocurrency> {
                   size: 30.0,
                 ),
                 label: Text('logout'),
-                onPressed: () async {
-                  //Navigator.pushReplacementNamed(context, 'LoginPage');
-                  await _auth.signOut();
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, 'LoginPage');
+                  
+                  
                 },
               ),
             ),
           ],
         ),
       ),
-     /* bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Cryptocurrency list'),
-            backgroundColor: Colors.blue,
-            
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Subscribed cryptocurrencies'),
-            backgroundColor: Colors.blue,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Logout'),
-            backgroundColor: Colors.blue,
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),*/
+    
     );
   }
 }
