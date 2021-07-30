@@ -59,16 +59,34 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
         url_data: 'litecoin',
         currency_pic: 'dogecoin.png',
         currency_name: 'Litecoin'),
+        
+        currency(
+        url_data: 'dash',
+        currency_pic: 'dogecoin.png',
+        currency_name: 'DASH'),
     currency(
         url_data: 'iota', currency_pic: 'dogecoin.png', currency_name: 'IOTA'),
     currency(
         url_data: 'monero',
         currency_pic: 'dogecoin.png',
         currency_name: 'Monero'),
+        
     currency(
         url_data: 'ethereum-classic',
         currency_pic: 'dogecoin.png',
         currency_name: 'Ethereum Classic'),
+        currency(
+        url_data: 'tron',
+        currency_pic: 'dogecoin.png',
+        currency_name: 'TRON'),
+        currency(
+        url_data: 'neo',
+        currency_pic: 'dogecoin.png',
+        currency_name: 'NEO'),
+        currency(
+        url_data: 'binance-coin',
+        currency_pic: 'dogecoin.png',
+        currency_name: 'Binance Coin'),
   ];
 
   //prices to print in home page
@@ -199,7 +217,17 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
                                                                         : (pricedata["${currency_data[index].currency_name}symbol"] ==
                                                                                 'XLM')
                                                                             ? Colors.teal[800]
-                                                                            : Colors.grey[200],
+                                                                            : (pricedata["${currency_data[index].currency_name}symbol"] ==
+                                                                                'DASH')
+                                                                            ? Colors.brown[300]: (pricedata["${currency_data[index].currency_name}symbol"] ==
+                                                                                'BNB')
+                                                                            ? Colors.amber[400]: (pricedata["${currency_data[index].currency_name}symbol"] ==
+                                                                                'ADA')
+                                                                            ? Colors.grey[100]: (pricedata["${currency_data[index].currency_name}symbol"] ==
+                                                                                'TRX')
+                                                                            ? Colors.red[600]:
+                                                                            
+                                                                            Colors.grey[200],
                                 margin: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6),
                                 child: Padding(
                                   padding: EdgeInsets.all(0),
@@ -394,10 +422,31 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
                                                                                           )
                                                                                         : (pricedata["${currency_data[index].currency_name}symbol"] == 'XLM')
                                                                                             ? CircleAvatar(
+                                                                                              backgroundColor: Colors.black,
                                                                                                 radius: 25.0,
                                                                                                 backgroundImage: AssetImage('assets/stellar2.jpg'),
                                                                                               )
-                                                                                            : CircleAvatar(
+                                                                                            :(pricedata["${currency_data[index].currency_name}symbol"] == 'DASH')
+                                                                                            ? CircleAvatar(
+                                                                                        backgroundColor: Colors.brown[100],
+                                                                                        child: new IconButton(
+                                                                                          icon: new Icon(
+                                                                                            CryptoFontIcons.DASH,
+                                                                                            size: 35.0,
+                                                                                            color: Colors.brown[700],
+                                                                                          ),
+                                                                                          onPressed: () {},
+                                                                                        ),
+                                                                                        radius: 25.0,
+                                                                                      ):(pricedata["${currency_data[index].currency_name}symbol"] == 'BNB')
+                                                                                            ? CircleAvatar(
+                                                                                        radius: 25.0,
+                                                                                                backgroundImage: AssetImage('assets/bnb.png'),):
+                                                                                                (pricedata["${currency_data[index].currency_name}symbol"] == 'TRX')
+                                                                                            ? CircleAvatar(
+                                                                                        radius: 25.0,
+                                                                                                backgroundImage: AssetImage('assets/trx.png'),):
+                                                                                                CircleAvatar(
                                                                                                 radius: 25.0,
                                                                                                 backgroundImage: AssetImage('assets/ADA.jpg'),
                                                                                               ),

@@ -267,6 +267,43 @@ class _HomeState extends State<Home> {
                                                                 ),
                                                                
                                                                 radius: 25.0,
+                                                              ):(data['${key}'][
+                                                                    'symbol'] ==
+                                                                'DASH')
+                                                            ? CircleAvatar(
+                                                                backgroundColor: Colors.brown[100],
+                                                                child:
+                                                                    new IconButton(
+                                                                  icon:
+                                                                      new Icon(
+                                                                    CryptoFontIcons.DASH,
+                                                                       color: Colors.brown, 
+                                                                    size: 35.0,
+                                                                    
+                                                                    ),
+                                                                    onPressed:
+                                                                      () {},
+                                                                ),
+                                                               
+                                                                radius: 25.0,
+                                                              ):(data['${key}'][
+                                                                    'symbol'] ==
+                                                                'BNB')
+                                                            ? CircleAvatar(radius: 25.0,
+                                                                
+                                                                backgroundImage:
+                                                                    AssetImage(
+                                                                        'assets/bnb.png'),
+                                                                 
+                                                              ):(data['${key}'][
+                                                                    'symbol'] ==
+                                                                'TRX')
+                                                            ? CircleAvatar(radius: 25.0,
+                                                                
+                                                                backgroundImage:
+                                                                    AssetImage(
+                                                                        'assets/trx.png'),
+                                                                 
                                                               ):CircleAvatar(
                                                                     radius:
                                                                         25.0,
