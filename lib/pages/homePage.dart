@@ -304,6 +304,15 @@ class _HomeState extends State<Home> {
                                                                     AssetImage(
                                                                         'assets/trx.png'),
                                                                  
+                                                              ):(data['${key}'][
+                                                                    'symbol'] ==
+                                                                'NEO')
+                                                            ? CircleAvatar(radius: 25.0,
+                                                                
+                                                                backgroundImage:
+                                                                    AssetImage(
+                                                                        'assets/neo.jpg'),
+                                                                 
                                                               ):CircleAvatar(
                                                                     radius:
                                                                         25.0,

@@ -446,6 +446,10 @@ class _CryptoCurrencyListState extends State<CryptoCurrencyList> {
                                                                                             ? CircleAvatar(
                                                                                         radius: 25.0,
                                                                                                 backgroundImage: AssetImage('assets/trx.png'),):
+                                                                                                (pricedata["${currency_data[index].currency_name}symbol"] == 'NEO')
+                                                                                            ? CircleAvatar(
+                                                                                        radius: 25.0,
+                                                                                                backgroundImage: AssetImage('assets/neo.jpg'),):
                                                                                                 CircleAvatar(
                                                                                                 radius: 25.0,
                                                                                                 backgroundImage: AssetImage('assets/ADA.jpg'),
