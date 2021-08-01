@@ -346,7 +346,7 @@ class _HomeState extends State<Home> {
                                           '${data['${key}']['sign']}${data['${key}']['changePercent24Hr']}%',
                                           style: TextStyle(
                                             fontFamily: 'font1.otf',
-                                            //fontWeight: FontWeight.w800,
+                                          
                                             fontSize: 19.0,
                                           ),
                                         ),
