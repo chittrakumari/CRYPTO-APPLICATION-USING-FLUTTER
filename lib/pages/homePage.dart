@@ -29,8 +29,6 @@ class _HomeState extends State<Home> {
         data.addAll(ModalRoute.of(context)!.settings.arguments as Map);
       }
     }
-    if (data.isNotEmpty) {}
-
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
@@ -413,7 +411,7 @@ class _HomeState extends State<Home> {
                                           ),
                                         ),
                                       ],
-                                    ),
+                                    ),//sub title
                                   )));
                         })
                   ],
@@ -422,7 +420,7 @@ class _HomeState extends State<Home> {
           ),
           
           Align(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.bottomRight,
             child: ButtonTheme(
               buttonColor: Colors.deepPurple,
               child: RaisedButton(
