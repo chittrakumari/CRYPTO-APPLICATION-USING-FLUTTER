@@ -2,7 +2,6 @@ import 'package:crypto_application/firebase_authentication/authenticate.dart';
 import 'package:crypto_application/models/user.dart';
 import 'package:crypto_application/pages/demo_home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:crypto_application/pages/homePage.dart';
 import 'package:provider/provider.dart';
 
 class Wrapper extends StatelessWidget {
