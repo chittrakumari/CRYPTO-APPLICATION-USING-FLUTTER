@@ -16,8 +16,10 @@ class Demo_Home extends StatefulWidget {
 }
 
 class _Demo_HomeState extends State<Demo_Home> {
-  final AuthService _auth = AuthService();
   int c = 0;
+
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -5,11 +5,8 @@ import 'package:crypto_application/pages/add_view.dart';
 import 'package:crypto_application/pages/demo_home_page.dart';
 import 'package:crypto_application/pages/register.dart';
 import 'package:flutter/material.dart';
-import 'package:crypto_application/pages/cryptocurrencyList.dart';
-import 'package:crypto_application/pages/homePage.dart';
 import 'package:crypto_application/pages/WelcomePage.dart';
 import 'package:crypto_application/pages/loginPage.dart';
-import 'package:crypto_application/pages/detailsCryptoCurrency.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 void main() async{
@@ -35,9 +32,6 @@ class MyApp extends StatelessWidget {
             'LoginPage':(context)=>LoginPage(),
             'RegisterPage':(context)=>RegisterPage(),
             'Demo':(context)=>Demo_Home(),
-            'HomePage': (context) => Home(),
-            'CryptoCurrencyList': (context) => CryptoCurrencyList(),
-            'DetailsCryptocurrency': (context) => DetailsCryptocurrency(),
             'Wrapper':(context)=>Wrapper(),
              'AddView':(context)=>AddView(),
           }),
